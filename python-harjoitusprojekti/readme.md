@@ -1,3 +1,3 @@
-#Läydä uloskäynti
+#Löydä uloskäynti
 
 Alina Prokopenko

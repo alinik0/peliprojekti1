@@ -1,9 +1,11 @@
 import time
 import questionary
+ #kirjastoen import
 
 from pelaaja import Pelaaja
 from huone import Huone
 from esine import Esine
+ #luokkien tuonti
 
 from makuuhuone import makuuhuone
 from keittio import keittio
@@ -11,6 +13,7 @@ from olohuone import olohuone
 from eteinen import eteinen
 from kylpyhuone import kylpyhuone
 
+#huone toimintojen import
 
 def kirjoita(teksti):
     for kirjain in teksti:
@@ -18,6 +21,7 @@ def kirjoita(teksti):
         time.sleep(0.03)
     print()
 
+#tulostetaan teksti kitrjain kerrallaan
 
 kirjoita("Hei ja tervetuloa peliin!")
 time.sleep(0.5)
@@ -31,7 +35,7 @@ nimi = input("Mikä sinun nimesi on? ")
 print("")
 ika = int(input("Kuinka vanha olet? "))
 
-
+#pelin tervehdys 
 if ika < 12:
     print("")
     kirjoita("Voi ei, " + nimi + "!")
@@ -40,23 +44,24 @@ if ika < 12:
     time.sleep(0.5)
     kirjoita("Sinun pitää vielä kasvaa!")
 
+#ikörajan tarkastus 
 else:
-    makuuhuone_obj = Huone("Makuuhuone")
+    makuuhuone_obj = Huone("Makuuhuone") #huoneiden luominen 
     keittio_obj = Huone("Keittiö")
     olohuone_obj = Huone("Olohuone")
     eteinen_obj = Huone("Eteinen")
     kylpyhuone_obj = Huone("Kylpyhuone")
 
-    vihko = Esine("vihko", 0.3)
+    vihko = Esine("vihko", 0.3) #esine luominen 
     kyna = Esine("kynä", 0.1)
     kannettava = Esine("kannettava", 2.0)
     omena = Esine("omena", 0.2)
     laukku = Esine("laukku", 0.5)
     avaimet = Esine("avaimet", 0.1)
 
-    pelaaja = Pelaaja(nimi, makuuhuone_obj)
+    pelaaja = Pelaaja(nimi, makuuhuone_obj) #peli alkaa makuuuonesta 
 
-    print("")
+    print("") #pelin tarinan aloitus
     kirjoita("Tervetuloa, " + nimi + "!")
     time.sleep(1)
 
@@ -102,9 +107,12 @@ else:
 
     peli_kaynnissa = True
 
+
+#pääsilmukka
+
     while peli_kaynnissa == True:
         print("")
-        print("Nykyinen sijainti:", pelaaja.sijainti.nimi)
+        print("Nykyinen sijainti:", pelaaja.sijainti.nimi) #sijaininnin näyttäminen 
 
         komento = questionary.select(
             "Minne haluat mennä?",
